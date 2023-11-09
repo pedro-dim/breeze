@@ -61,7 +61,8 @@ class SkillFactory extends Factory
 
 
         return [
-            'skill' => $this->abilitySkills[array_rand($this->abilitySkills)]
+            'skill' => $this->abilitySkills[array_rand($this->abilitySkills)],
+            'user_id' => 1
         ];
     }
 }

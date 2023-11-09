@@ -21,7 +21,8 @@ Route::get('/', function () {
 });
 
 
-Route::get('/book',[BookController::class,'show'])->name('books');
+Route::get('/book', [BookController::class, 'show'])->name('books');
+Route::get('/userSkill', [UserController::class, 'show'])->name('users');
 
 
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
 
@@ -41,7 +42,10 @@ class UserController extends Controller
      */
     public function show()
     {
-        return view('user.show');
+        $user = User::with('getSkill')->get();
+        return response()->json($user);
+
+        // return view('user.show');
     }
 
     /**
