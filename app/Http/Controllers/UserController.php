@@ -19,7 +19,7 @@ class UserController extends Controller
 
     public function getRedis()
     {
-
+        //Alter test
         // Redis::set('user', 'pedro');
         Redis::expire('user', 5);
         return Redis::get('user');
