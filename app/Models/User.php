@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Book;
+use App\Models\Purchase;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -53,6 +54,18 @@ class User extends Authenticatable
 
     public function getSkill()
     {
-        return $this->hasMany(Skill::class);
+        return $this->belongsToMany(Skill::class);
+    }
+
+    /**
+     * Return all purchace belong this user
+     * @param Type $var Description
+     * @return array
+     * @throws
+     **/
+
+    public function getPurchase(): array
+    {
+        return $this->hasMany(Purchase::class);
     }
 }

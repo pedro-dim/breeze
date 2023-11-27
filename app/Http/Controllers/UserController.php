@@ -40,9 +40,50 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      */
+    public function showUsers()
+    {
+        $user = User::all();
+
+        return response()->json($user);
+
+        // return view('user.show');
+    }
+
+    public function findUser(User $id)
+    {
+        $user = User::find($id);
+
+        return response()->json($user);
+
+        // return view('user.show');
+    }
+
+    public function findUserSkill(User $id)
+    {
+
+
+        $user = User::whereHas('getSkill', function ($query) {
+            $query->where('skill_id', 4);
+        })->get();
+
+        return response()->json($user);
+
+        // return view('user.show');
+    }
+
+
+
+    /**
+     * Display the specified resource.
+     */
     public function show()
     {
-        $user = User::with('getSkill')->get();
+        $user = User::whereHas('getSkill', function ($query) {
+            $query->where('skill_id', 7);
+        })->get();
+
+        dd($user->toArray());
+        $user->getskill()->attach([1, 2, 3]);
         return response()->json($user);
 
         // return view('user.show');
