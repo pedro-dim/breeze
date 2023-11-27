@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
+use Illuminate\Support\Facades\Redis;
 
 class UserController extends Controller
 {
@@ -15,6 +16,15 @@ class UserController extends Controller
     {
         //
     }
+
+    public function getRedis()
+    {
+
+        // Redis::set('user', 'pedro');
+        Redis::expire('user', 5);
+        return Redis::get('user');
+    }
+
 
     public function form()
     {
